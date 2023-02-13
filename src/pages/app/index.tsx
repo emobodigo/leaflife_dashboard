@@ -1,5 +1,5 @@
 import MainLayout from '@/components/layouts/main/MainLayout';
-import { NextPageWithLayout } from './page';
+import { NextPageWithLayout } from '../page';
 
 const Dashboard: NextPageWithLayout = () => {
   return <div>Dashboard</div>;

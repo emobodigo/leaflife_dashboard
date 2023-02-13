@@ -7,13 +7,13 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
-  Image,
   Input,
   InputGroup,
   InputRightElement,
   useToast,
 } from '@chakra-ui/react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -30,7 +30,6 @@ const Home: FC = () => {
   });
   const { errors, isValid, isSubmitting } = formState;
   const [showPassword, setShowPassword] = useState(false);
-
   const registerOptions = {
     username: { required: 'Username is required' },
     password: {
@@ -44,7 +43,7 @@ const Home: FC = () => {
 
   const handleSignIn: SubmitHandler<FormValues> = async (data) => {
     toast(toastFactory('Test title', 'Test Message', 'error'));
-    router.push('/dashboard');
+    router.push('/app');
   };
 
   return (
@@ -65,17 +64,17 @@ const Home: FC = () => {
             w={{ base: 'full', lg: '50%' }}
             h="full"
           >
-            <Heading as="h1" size="lg" noOfLines={1} color="green.600" mb={2}>
+            <Heading as="h1" size="lg" noOfLines={1} color="purple.600" mb={2}>
               Welcome back
             </Heading>
-            <Heading as="h2" size="xs" noOfLines={1} color="green.600" mb={10}>
+            <Heading as="h2" size="xs" noOfLines={1} color="purple.600" mb={10}>
               Please enter your details
             </Heading>
             <form onSubmit={handleSubmit(handleSignIn)}>
               <FormControl w="full" isInvalid={Boolean(errors.username)}>
                 <FormLabel
                   htmlFor="username"
-                  color="green.600"
+                  color="purple.600"
                   fontWeight="semibold"
                 >
                   Username
@@ -84,8 +83,8 @@ const Home: FC = () => {
                   id="username"
                   type="text"
                   placeholder="Enter your Username"
-                  focusBorderColor="green.800"
-                  borderColor="green.600"
+                  focusBorderColor="purple.800"
+                  borderColor="purple.600"
                   {...register('username', registerOptions.username)}
                   data-testid="usernameInput"
                 />
@@ -96,7 +95,7 @@ const Home: FC = () => {
               <FormControl w="full" mt={4} isInvalid={Boolean(errors.password)}>
                 <FormLabel
                   htmlFor="password"
-                  color="green.600"
+                  color="purple.600"
                   fontWeight="semibold"
                 >
                   Password
@@ -106,8 +105,8 @@ const Home: FC = () => {
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="********"
-                    focusBorderColor="green.800"
-                    borderColor="green.600"
+                    focusBorderColor="purple.800"
+                    borderColor="purple.600"
                     pr="4.5rem"
                     {...register('password', registerOptions.password)}
                     data-testid="passwordInput"
@@ -127,10 +126,10 @@ const Home: FC = () => {
                 </FormErrorMessage>
               </FormControl>
               <Button
-                backgroundColor="green.600"
+                backgroundColor="purple.600"
                 color="white"
                 _hover={{
-                  backgroundColor: 'green.700',
+                  backgroundColor: 'purple.700',
                 }}
                 isLoading={isSubmitting}
                 loadingText="Submitting"
@@ -150,11 +149,11 @@ const Home: FC = () => {
             display={{ base: 'none', md: 'block' }}
           >
             <Image
-              alt="login-background"
-              h="full"
-              w="full"
-              objectFit="cover"
               src="/images/login-bg.png"
+              width={500}
+              height={500}
+              alt="login-background"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </Box>
         </Flex>

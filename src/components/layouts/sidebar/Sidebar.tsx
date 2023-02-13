@@ -40,7 +40,7 @@ const Sidebar: FC<ISidebar> = () => {
         justifyContent="center"
         pos="relative"
       >
-        <SiOverleaf fontSize={40} color="#2F855A" />
+        <SiOverleaf fontSize={40} color="#805AD5" />
         <Box
           height={5}
           w={5}

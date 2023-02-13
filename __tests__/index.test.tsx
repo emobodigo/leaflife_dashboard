@@ -50,7 +50,7 @@ describe('Home', () => {
       expect(buttonSubmit.disabled).toBe(false);
       fireEvent.click(buttonSubmit);
       expect(router.push).toHaveBeenCalledTimes(1);
-      expect(router.push).toHaveBeenCalledWith('/dashboard');
+      expect(router.push).toHaveBeenCalledWith('/app');
     });
   });
 

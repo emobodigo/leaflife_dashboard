@@ -1,13 +1,15 @@
 import useUIStore from '@/lib/stores/useUiStore';
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import Head from 'next/head';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import AppBar from '../AppBar/AppBar';
 import Sidebar from '../sidebar/Sidebar';
 
-export interface IMainLayout {}
+export interface IMainLayout {
+  children: ReactNode;
+}
 
-const MainLayout: FC<IMainLayout> = () => {
+const MainLayout: FC<IMainLayout> = ({ children }) => {
   const isMaximizedSidebar = useUIStore((state) => state.isMaximizedSidebar);
   return (
     <>
@@ -20,8 +22,14 @@ const MainLayout: FC<IMainLayout> = () => {
       <main>
         <Flex maxH="100vh" minH="100vh" overflow="hidden">
           <Sidebar />
-          <Flex flex={isMaximizedSidebar ? 0.87 : 0.95}>
+          <Flex
+            flex={{ base: 1, lg: isMaximizedSidebar ? 0.87 : 0.95 }}
+            flexDirection="column"
+          >
             <AppBar />
+            <Box px="20px" py="8px">
+              {children}
+            </Box>
           </Flex>
         </Flex>
       </main>
